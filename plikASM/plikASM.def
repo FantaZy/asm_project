@@ -1,0 +1,4 @@
+LIBRARY "plikASM" 
+EXPORTS 
+;MojaFunkcja
+sort
