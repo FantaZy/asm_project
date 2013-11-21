@@ -1,5 +1,5 @@
 #include "plikCPP.h"
-
+#include "ArrayToBeSort.h"
 
 #include <iostream>
 #include <iostream>
@@ -72,22 +72,23 @@ int main()
 
 
 	
-	int x = ileLiczbWPliku(FOLDER_IN "plik.txt");
-	int* t = new int[x];
-	t = wczytajPlik(FOLDER_IN "plik.txt", x);
+//	int x = ileLiczbWPliku(FOLDER_IN "plik.txt");
+	//int* t = new int[x];
+	//t = wczytajPlik(FOLDER_IN "plik.txt", x);
 	//fun( t,x );
-	funCPP(t, x);
+	//funCPP(t, x);
+//
 	
 
 	cout << "<done>\n";
 
-	printTable(x, t);
+	//printTable(x, t);
 	
 
 	cout << "\n<done2>\n";
 	
 
-	delete[]t; // zwalniamy pamiêæ po tablicy
+	//delete[]t; // zwalniamy pamiêæ po tablicy
 
 
 	system("pause");
