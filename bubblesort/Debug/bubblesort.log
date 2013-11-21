@@ -1,11 +1,9 @@
-﻿Build started 2013-11-21 02:28:12.
-     1>Project "C:\Users\Maciek\Documents\Visual Studio 2010\Projects\bubblesort\bubblesort\bubblesort.vcxproj" on node 2 (Rebuild target(s)).
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\v120\Microsoft.CppClean.targets(76,5): warning : The process cannot access the file 'c:\users\maciek\documents\visual studio 2010\projects\bubblesort\bubblesort\debug\vc120.idb' because it is being used by another process.
+﻿Build started 2013-11-21 15:10:58.
+     1>Project "C:\Users\Maciek\Documents\Visual Studio 2010\Projects\bubblesort\bubblesort\bubblesort.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Maciek\Documents\Visual Studio 2010\Projects\bubblesort\plikCPP" /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ArrayToBeSort.cpp funkcje.cpp main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Maciek\Documents\Visual Studio 2010\Projects\bubblesort\plikCPP" /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ArrayToBeSort.cpp main.cpp
          main.cpp
      1>c:\users\maciek\documents\visual studio 2010\projects\bubblesort\bubblesort\main.cpp(19): warning C4229: anachronism used : modifiers on data are ignored
-         funkcje.cpp
          ArrayToBeSort.cpp
      1>c:\users\maciek\documents\visual studio 2010\projects\bubblesort\bubblesort\arraytobesort.cpp(5): warning C4229: anachronism used : modifiers on data are ignored
          Generating Code...
@@ -14,8 +12,8 @@
          Debug\funkcje.obj
          Debug\main.obj
          bubblesort.vcxproj -> C:\Users\Maciek\Documents\Visual Studio 2010\Projects\bubblesort\Debug\bubblesort.exe
-     1>Done Building Project "C:\Users\Maciek\Documents\Visual Studio 2010\Projects\bubblesort\bubblesort\bubblesort.vcxproj" (Rebuild target(s)).
+     1>Done Building Project "C:\Users\Maciek\Documents\Visual Studio 2010\Projects\bubblesort\bubblesort\bubblesort.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:04.36
+Time Elapsed 00:00:03.17

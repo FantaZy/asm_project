@@ -78,7 +78,10 @@ int main()
 	//fun( t,x );
 	//funCPP(t, x);
 //
-	
+	ArrayToBeSort tab(".\\folder_in\\plik.txt",".\\folder_out\\plik.txt" );
+	tab.wczytajPlik();
+	tab.sortujWCPP();
+	tab.zapiszPlik();
 
 	cout << "<done>\n";
 

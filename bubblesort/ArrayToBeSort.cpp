@@ -30,6 +30,9 @@ ArrayToBeSort::ArrayToBeSort(string sciezkaI, string sciezkaO)
 
 ArrayToBeSort::~ArrayToBeSort()
 {
+	delete[] ptrToIn;
+	//delete[] ptrToOut;
+
 }
 
 
@@ -55,19 +58,19 @@ int ArrayToBeSort::ileLiczbWPliku(string sciezka)
 
 
 /*funkcja wczytujaca liczby z pliku, wpisuje je do tablicy, ktora zwraca*/
-int* ArrayToBeSort::wczytajPlik(string sciezka)
+void ArrayToBeSort::wczytajPlik()
 {
 	fstream plik;
-	plik.open(sciezka, ios::in);
+	plik.open(this->sciezkaIn, ios::in);
 
 
 	if (plik.is_open() == true)
 	{
 		int i = 0;
-		int j = this->ileLiczbWPliku(sciezka);
-		int *tab;
-		tab = new int[j];
-		this->ptrToIn = tab;
+		int j = this->ileLiczbWPliku(this->sciezkaIn);
+		//int *tab;
+		//tab = new int[j];
+		this->ptrToIn = new int[j];
 
 		int temp = 0;
 
@@ -76,21 +79,55 @@ int* ArrayToBeSort::wczytajPlik(string sciezka)
 		{
 
 			plik >> temp;
-			tab[i] = temp;
-			cout << tab[i] << "\n";
+			//tab[i] = temp;
+			this->ptrToIn[i] = temp;
+			cout << this->ptrToIn[i] << "\n";
 			i++;
 
 		}
-		return tab;
-		this->ptrToOut = tab;
+		//return tab;
+		
 
 
 	}
-	else return nullptr;  // je¿eli nie uda³o siê otworzyæ pliku to zwracamy nullptr 
+	else cout << "blad przy wczytywaniu pliku";  // je¿eli nie uda³o siê otworzyæ pliku to zwracamy nullptr 
 	plik.close();
 
 
 
+}
+
+
+void ArrayToBeSort::zapiszPlik()
+{
+	fstream plik;
+	plik.open(this->sciezkaOut, fstream::out);
+
+	for (int i = 0; i < this->iloscElementow; i++)
+	{
+		plik << this->ptrToOut[i] << "\n";
+	}
+}
+
+void ArrayToBeSort::sortujWAsm()
+{
+	this->kopiujTablice();
+	fun(this->ptrToOut, this->iloscElementow);
+}
+
+void ArrayToBeSort::sortujWCPP()
+{
+	this->kopiujTablice();
+	funCPP(this->ptrToOut, this->iloscElementow);
+}
+
+void ArrayToBeSort::kopiujTablice()
+{
+	this->ptrToOut = new int[this->iloscElementow];
+	for (int i = 0; i < this->iloscElementow; i++)
+	{
+		this->ptrToOut[i] = this->ptrToIn[i];
+	}
 }
 
 

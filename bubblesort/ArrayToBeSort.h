@@ -21,14 +21,19 @@ private:
 	int iloscElementow;
 	int* ptrToIn;
 	int* ptrToOut;
+	static int indeksPliku;
 
 public:
 
-	
+	void sortujWAsm();
+	void sortujWCPP();
 	void setSciezkaIn(string sciezka);
 	void setSciezkaOut(string sciezka);
+
 	int ileLiczbWPliku(string sciezka);
-	int* wczytajPlik(string sciezka);
+	void kopiujTablice();
+	void wczytajPlik();
+	void zapiszPlik();
 
 	ArrayToBeSort(string sciezkaI, string sciezkaO);
 	~ArrayToBeSort();
