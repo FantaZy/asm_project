@@ -25,12 +25,13 @@ ArrayToBeSort::ArrayToBeSort(string sciezkaI, string sciezkaO)
 	setSciezkaIn(sciezkaI);
 	setSciezkaOut(sciezkaO);
 	iloscElementow = ileLiczbWPliku(sciezkaIn);
+	
 }
 
 
 ArrayToBeSort::~ArrayToBeSort()
 {
-	delete[] ptrToIn;
+	//delete[] ptrToIn;
 	//delete[] ptrToOut;
 
 }
@@ -49,7 +50,7 @@ int ArrayToBeSort::ileLiczbWPliku(string sciezka)
 	{
 		while (getline(plik, line))
 			++iloscLiczb;
-
+		plik.close();
 		return iloscLiczb;
 	}
 	else return -1;
@@ -107,6 +108,7 @@ void ArrayToBeSort::zapiszPlik()
 	{
 		plik << this->ptrToOut[i] << "\n";
 	}
+	plik.close();
 }
 
 void ArrayToBeSort::sortujWAsm()
@@ -139,4 +141,29 @@ void ArrayToBeSort::setSciezkaIn(string sciezka)
 void ArrayToBeSort::setSciezkaOut(string sciezka)
 {
 	sciezkaOut = sciezka;
+}
+
+void ArrayToBeSort::startCPP()
+{
+	this->wczytajPlik();
+	this->sortujWCPP();
+	this->zapiszPlik();
+}
+
+void ArrayToBeSort::startASM()
+{
+	this->wczytajPlik();
+	this->sortujWAsm();
+	this->zapiszPlik();
+}
+
+void ArrayToBeSort::operator=(const ArrayToBeSort &arr)
+{
+	sciezkaIn = arr.sciezkaIn;
+	sciezkaOut = arr.sciezkaOut;
+	iloscElementow = arr.iloscElementow;
+	ptrToIn = arr.ptrToIn;
+	ptrToOut = arr.ptrToOut;
+	//indeksPliku = arr.indeksPliku;
+
 }

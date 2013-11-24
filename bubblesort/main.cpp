@@ -1,99 +1,101 @@
 #include "plikCPP.h"
 #include "ArrayToBeSort.h"
-
+#include <future>
 #include <iostream>
 #include <iostream>
 #include <stdlib.h>
-
+#include <vector>
+#include <mutex>
 #include <thread>
 #include <list>
 
+
 #undef UNICODE
 #include <Windows.h>
-#include "funkcje.h"
-
-#define FOLDER_IN ".\\folder_in\\"
-#define FOLDER_OUT ".\\folder_out\\"
 
 
-typedef int* (*__stdcall funkcja)(int* arr, int amount);
+
+
+
+const string FOLDER_OUT = ".\\folder_out\\";
+const int ILOSC_PLIKOW_TESTOWYCH = 5;
+const string FOLDER_IN = ".\\folder_in\\";
 
 using namespace std;
 
-//tworzenie tablicy dynamicznej o zadanej d³ugoœci - amount
-int* createTable( int amount )
+int foo()
 {
-	
-	int* tab = new int[amount];
-	for (int i = 0; i < amount; i++)
-	{
-		int x = rand() % 1000;
-		tab[i] = x;
-	}
-	return tab;
+	return 0;
 }
-//wypisywanie przekazanej jako parametr tablicy ( wskaznik na tablicê + iloœæ elementów )
-void printTable( int amount, int* tab )
-{
-	for (int j = 0; j < amount; j++)
-	{
-		cout << tab[j];
-		cout << "\n";
-	}
-}
-
 
 int main()
 {
 
-	HMODULE lib = LoadLibrary("plikASM.dll");
-	if (lib == NULL)
-		return -1;
-
-	funkcja fun = (funkcja)GetProcAddress(lib, "sort");
-	if (fun == NULL)
-		return -1;
-
-	HMODULE libCpp = LoadLibrary("plikCPP.dll");
-	if (libCpp == NULL)
-		return -1;
-
-	funkcja funCPP = (funkcja)GetProcAddress(libCpp, "testfunc");
-	if (funCPP == NULL)
-		return -1;
-
+	int ileWatkow = 4; // tymczasowa ilosc watkow podana przez usera;
+	int index = 0;
+	int index2 = 0;
+	
+	mutex sort_mutex;
 	/*
 	//watki
 	int* tab = createTable(30);	
 	thread first(fun,tab,8);	
 	first.join();*/
-	
-	
 
+	vector<string> listaSciezekPlikow;
+	vector<ArrayToBeSort> listaTablicDoSortowania;
+	vector<thread> listaWatkow(ileWatkow);
 
+	for (int i = 0; i < ILOSC_PLIKOW_TESTOWYCH; i++)
+	{
+		string indeksPliku = to_string(i); //zmiana indeksu pliku na stringa
+		listaSciezekPlikow.push_back(FOLDER_IN + indeksPliku + ".txt");
+	}
+
+	/*wype³nienie listyTablicDoSortowania tablicami liczb*/
 	
-//	int x = ileLiczbWPliku(FOLDER_IN "plik.txt");
-	//int* t = new int[x];
-	//t = wczytajPlik(FOLDER_IN "plik.txt", x);
-	//fun( t,x );
-	//funCPP(t, x);
-//
-	ArrayToBeSort tab(".\\folder_in\\plik.txt",".\\folder_out\\plik.txt" );
-	tab.wczytajPlik();
-	tab.sortujWCPP();
-	tab.zapiszPlik();
+	for (string &list : listaSciezekPlikow)
+	{
+		string tmp = to_string(index);
+		
+		ArrayToBeSort tab(listaSciezekPlikow[index], FOLDER_OUT + tmp + ".txt");
+		//tab.wczytajPlik();
+		listaTablicDoSortowania.push_back(tab);				
+		index++;					
+	}
+	
+	for (int i = 0; i < ileWatkow; i++)
+		listaWatkow.push_back(thread([&listaTablicDoSortowania, &sort_mutex ]{
+			while (true)
+			{
+				sort_mutex.lock();
+				if (listaTablicDoSortowania.empty())
+				{
+					sort_mutex.unlock();
+					break;						
+				}
+				ArrayToBeSort tablicaDoSortowania = listaTablicDoSortowania.back();
+				listaTablicDoSortowania.pop_back();
+				
+				tablicaDoSortowania.startASM();
+				sort_mutex.unlock();
+				
+				
+			}
+	}
+		
+	));
+
+	for (thread& th : listaWatkow)
+		th.join();
+	
+	
 
 	cout << "<done>\n";
 
-	//printTable(x, t);
-	
-
 	cout << "\n<done2>\n";
 	
-
-	//delete[]t; // zwalniamy pamiêæ po tablicy
-
-
+	
 	system("pause");
 
 	return 0;

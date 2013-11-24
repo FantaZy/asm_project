@@ -1,9 +1,9 @@
-﻿Build started 2013-11-21 14:32:11.
+﻿Build started 2013-11-24 20:37:07.
      1>Project "C:\Users\Maciek\Documents\Visual Studio 2010\Projects\bubblesort\plikASM\plikASM.vcxproj" on node 2 (Rebuild target(s)).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\v120\Microsoft.CppBuild.targets(357,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
      1>_MASM:
          Assembling plikASM.asm...
-         cmd.exe /C "C:\Users\Maciek\AppData\Local\Temp\tmpb4aa0f823d44459d95273fc10566e411.cmd"
+         cmd.exe /C "C:\Users\Maciek\AppData\Local\Temp\tmp447d9af3c7064054b61141799b65c1fb.cmd"
          ml.exe /c /nologo /Zi /Fo"Debug\plikASM.obj" /W3 /errorReport:prompt  /TaplikASM.asm
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Maciek\Documents\Visual Studio 2010\Projects\bubblesort\Debug\plikASM.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:"plikASM.def" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Maciek\Documents\Visual Studio 2010\Projects\bubblesort\Debug\plikASM.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /NOENTRY /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Maciek\Documents\Visual Studio 2010\Projects\bubblesort\Debug\plikASM.lib" /MACHINE:X86 /DLL Debug\plikASM.obj
@@ -13,4 +13,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.68
+Time Elapsed 00:00:00.62

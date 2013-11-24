@@ -18,17 +18,11 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="funkcje.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ArrayToBeSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="funkcje.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ArrayToBeSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>

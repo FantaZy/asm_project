@@ -15,7 +15,7 @@ using namespace std;
 
 class ArrayToBeSort
 {
-private:	
+public:	
 	string sciezkaIn;
 	string sciezkaOut;
 	int iloscElementow;
@@ -34,8 +34,13 @@ public:
 	void kopiujTablice();
 	void wczytajPlik();
 	void zapiszPlik();
+	void startCPP();
+	void startASM();
+	int* getPtrToIn(){ return ptrToIn; }
+	void operator=(const ArrayToBeSort &arr);
 
 	ArrayToBeSort(string sciezkaI, string sciezkaO);
+	ArrayToBeSort(){}
 	~ArrayToBeSort();
 };
 
