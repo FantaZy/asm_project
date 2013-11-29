@@ -5,42 +5,38 @@
 #include <fstream>
 #include <Windows.h>
 
-using namespace std;
-
-
-
-
-
-
+typedef void __declspec(dllimport) (*__cdecl funkcja)(int* arr, int amount);
 
 class ArrayToBeSort
 {
-public:	
-	string sciezkaIn;
-	string sciezkaOut;
+private:	
+	std::string sciezkaIn;
+	std::string sciezkaOut;
 	int iloscElementow;
 	int* ptrToIn;
 	int* ptrToOut;
 	static int indeksPliku;
-
+	
+	HMODULE lib, libCpp;
+	funkcja fun, funCpp;
+	int init();
 public:
 
 	void sortujWAsm();
 	void sortujWCPP();
-	void setSciezkaIn(string sciezka);
-	void setSciezkaOut(string sciezka);
+	void setSciezkaIn(std::string sciezka);
+	void setSciezkaOut(std::string sciezka);
 
-	int ileLiczbWPliku(string sciezka);
+	int ileLiczbWPliku(std::string sciezka);
 	void kopiujTablice();
 	void wczytajPlik();
 	void zapiszPlik();
 	void startCPP();
 	void startASM();
-	int* getPtrToIn(){ return ptrToIn; }
 	void operator=(const ArrayToBeSort &arr);
 
-	ArrayToBeSort(string sciezkaI, string sciezkaO);
-	ArrayToBeSort(){}
+	ArrayToBeSort(std::string sciezkaI, std::string sciezkaO);
+	ArrayToBeSort();
 	~ArrayToBeSort();
 };
 

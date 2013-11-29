@@ -9,7 +9,7 @@ using namespace std;
 
 extern "C"
 {
-	__declspec(dllexport) int *  __cdecl testfunc(int* array, int amount)
+void __declspec(dllexport) __cdecl testfunc(int* array, int amount)
 	{
 		int i,j, swap;
 
@@ -28,7 +28,6 @@ extern "C"
 			}
 		}
 		cout << "funkcja testfunc() - dzia³a! " ;
-		return array;
 	}
 
 	

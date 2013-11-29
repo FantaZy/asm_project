@@ -13,38 +13,29 @@
 #undef UNICODE
 #include <Windows.h>
 
-
-
-
+using namespace std;
 
 const string FOLDER_OUT = ".\\folder_out\\";
 const int ILOSC_PLIKOW_TESTOWYCH = 5;
 const string FOLDER_IN = ".\\folder_in\\";
 
-using namespace std;
 
-int foo()
-{
-	return 0;
-}
+
+
 
 int main()
 {
 
-	int ileWatkow = 4; // tymczasowa ilosc watkow podana przez usera;
+	int ileWatkow = 2; // tymczasowa ilosc watkow podana przez usera;
 	int index = 0;
 	int index2 = 0;
-	
+
 	mutex sort_mutex;
-	/*
-	//watki
-	int* tab = createTable(30);	
-	thread first(fun,tab,8);	
-	first.join();*/
+
 
 	vector<string> listaSciezekPlikow;
-	vector<ArrayToBeSort> listaTablicDoSortowania;
-	vector<thread> listaWatkow(ileWatkow);
+	vector<ArrayToBeSort*> listaTablicDoSortowania;
+	vector<thread> listaWatkow;
 
 	for (int i = 0; i < ILOSC_PLIKOW_TESTOWYCH; i++)
 	{
@@ -53,49 +44,62 @@ int main()
 	}
 
 	/*wype³nienie listyTablicDoSortowania tablicami liczb*/
-	
+	ArrayToBeSort * tab[5];
+	int i = 0;
 	for (string &list : listaSciezekPlikow)
 	{
-		string tmp = to_string(index);
-		
-		ArrayToBeSort tab(listaSciezekPlikow[index], FOLDER_OUT + tmp + ".txt");
-		//tab.wczytajPlik();
-		listaTablicDoSortowania.push_back(tab);				
-		index++;					
+		string tmp = to_string(index++);
+		//listaTablicDoSortowania.push_back(new ArrayToBeSort(list, FOLDER_OUT + tmp + ".txt"));
+		tab[i] = new ArrayToBeSort(list, FOLDER_OUT + tmp + ".txt");
+		i++;
 	}
-	
-	for (int i = 0; i < ileWatkow; i++)
-		listaWatkow.push_back(thread([&listaTablicDoSortowania, &sort_mutex ]{
-			while (true)
-			{
-				sort_mutex.lock();
-				if (listaTablicDoSortowania.empty())
-				{
-					sort_mutex.unlock();
-					break;						
-				}
-				ArrayToBeSort tablicaDoSortowania = listaTablicDoSortowania.back();
-				listaTablicDoSortowania.pop_back();
-				
-				tablicaDoSortowania.startASM();
-				sort_mutex.unlock();
-				
-				
-			}
-	}
-		
-	));
+
+	//for (int i = 0; i < ileWatkow; i++)
+	//	
+	//	
+	//	listaWatkow.push_back(
+	//	thread([&listaTablicDoSortowania, &sort_mutex]
+	//	{
+	//		while (true)
+	//		{
+	//			sort_mutex.lock();
+	//			if (listaTablicDoSortowania.empty())
+	//			{
+	//				sort_mutex.unlock();
+	//				break;
+	//			}
+	//			ArrayToBeSort* tablicaDoSortowania = listaTablicDoSortowania.back();
+	//			
+	//			
+	//			tablicaDoSortowania->startCPP();
+	//			
+	//			delete tablicaDoSortowania;
+	//			listaTablicDoSortowania.pop_back();
+	//			sort_mutex.unlock();
+	//		}
+	//	}
+
+	//));
+
+
+	for (int i = 0; i < 5; i++)
+		{
+			//ArrayToBeSort* to = listaTablicDoSortowania.back();
+			//to->startCPP();
+			//delete to;
+			//listaTablicDoSortowania.pop_back();
+		tab[i]->startCPP();
+		delete tab[i];
+		}
 
 	for (thread& th : listaWatkow)
 		th.join();
-	
-	
 
 	cout << "<done>\n";
 
 	cout << "\n<done2>\n";
-	
-	
+
+
 	system("pause");
 
 	return 0;

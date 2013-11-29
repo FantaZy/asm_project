@@ -1,39 +1,46 @@
 #include "ArrayToBeSort.h"
 #include <Windows.h>
+using namespace std;
 
 
-typedef int* (*__stdcall funkcja)(int* arr, int amount);
 
-HMODULE lib = LoadLibrary("plikASM.dll");
-//if (lib == NULL)
-//return -1;
+int ArrayToBeSort::init()
+{
 
-funkcja fun = (funkcja)GetProcAddress(lib, "sort");
-//if (fun == NULL)
-//return -1;
+	lib = LoadLibrary("plikASM.dll");
+	if (lib == NULL)
+	return -1;
 
-HMODULE libCpp = LoadLibrary("plikCPP.dll");
-//if (libCpp == NULL)
-//return -1;
+	fun = (funkcja)GetProcAddress(lib, "sort");
+	if (fun == NULL)
+	return -1;
 
-funkcja funCPP = (funkcja)GetProcAddress(libCpp, "testfunc");
-//if (funCPP == NULL)
-//return -1;
+	libCpp = LoadLibrary("plikCPP.dll");
+	if (libCpp == NULL)
+	return -1;
+
+	funCpp = (funkcja)GetProcAddress(libCpp, "testfunc");
+	if (funCpp == NULL)
+	return -1;
+
+}
 
 ArrayToBeSort::ArrayToBeSort(string sciezkaI, string sciezkaO)
 {
 	setSciezkaIn(sciezkaI);
 	setSciezkaOut(sciezkaO);
 	iloscElementow = ileLiczbWPliku(sciezkaIn);
+	ptrToIn = nullptr;
+	ptrToOut = nullptr;
+	init();
 	
 }
 
 
 ArrayToBeSort::~ArrayToBeSort()
 {
-	//delete[] ptrToIn;
-	//delete[] ptrToOut;
-
+	delete[] ptrToIn;
+	delete[] ptrToOut;
 }
 
 
@@ -61,7 +68,8 @@ int ArrayToBeSort::ileLiczbWPliku(string sciezka)
 /*funkcja wczytujaca liczby z pliku, wpisuje je do tablicy, ktora zwraca*/
 void ArrayToBeSort::wczytajPlik()
 {
-	fstream plik;
+
+fstream plik;
 	plik.open(this->sciezkaIn, ios::in);
 
 
@@ -120,7 +128,7 @@ void ArrayToBeSort::sortujWAsm()
 void ArrayToBeSort::sortujWCPP()
 {
 	this->kopiujTablice();
-	funCPP(this->ptrToOut, this->iloscElementow);
+	funCpp(this->ptrToOut, this->iloscElementow);
 }
 
 void ArrayToBeSort::kopiujTablice()
@@ -162,8 +170,10 @@ void ArrayToBeSort::operator=(const ArrayToBeSort &arr)
 	sciezkaIn = arr.sciezkaIn;
 	sciezkaOut = arr.sciezkaOut;
 	iloscElementow = arr.iloscElementow;
-	ptrToIn = arr.ptrToIn;
-	ptrToOut = arr.ptrToOut;
+	ptrToIn = new int[iloscElementow];
+	ptrToOut = new int[iloscElementow];
+	memcpy((void*)ptrToIn, (void*)arr.ptrToIn, iloscElementow * sizeof(ptrToIn[0]));
+	memcpy((void*)ptrToOut, (void*)arr.ptrToOut, iloscElementow * sizeof(ptrToOut[0]));
 	//indeksPliku = arr.indeksPliku;
 
 }

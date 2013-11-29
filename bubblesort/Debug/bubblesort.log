@@ -1,9 +1,9 @@
-﻿Build started 2013-11-24 22:14:08.
+﻿Build started 2013-11-29 15:14:16.
      1>Project "C:\Users\Maciek\Documents\Visual Studio 2010\Projects\bubblesort\bubblesort\bubblesort.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Maciek\Documents\Visual Studio 2010\Projects\bubblesort\plikCPP" /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Maciek\Documents\Visual Studio 2010\Projects\bubblesort\plikCPP" /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
-     1>cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+     1>c:\users\maciek\documents\visual studio 2010\projects\bubblesort\bubblesort\arraytobesort.h(8): warning C4229: anachronism used : modifiers on data are ignored
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Maciek\Documents\Visual Studio 2010\Projects\bubblesort\Debug\bubblesort.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Maciek\Documents\Visual Studio 2010\Projects\bubblesort\Debug\bubblesort.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Maciek\Documents\Visual Studio 2010\Projects\bubblesort\Debug\bubblesort.lib" /MACHINE:X86 Debug\ArrayToBeSort.obj
          Debug\main.obj
@@ -12,4 +12,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.34
+Time Elapsed 00:00:04.42
