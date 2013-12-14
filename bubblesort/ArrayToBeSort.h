@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <Windows.h>
+#include <vector>
 
 typedef void __declspec(dllimport) (*__cdecl funkcja)(int* arr, int amount);
 
@@ -13,8 +14,10 @@ private:
 	std::string sciezkaIn;
 	std::string sciezkaOut;
 	int iloscElementow;
-	int* ptrToIn;
-	int* ptrToOut;
+	
+	std::vector<int> ptrToIn;
+	std::vector<int> ptrToOut;
+	
 	static int indeksPliku;
 	
 	HMODULE lib, libCpp;
@@ -22,10 +25,13 @@ private:
 	int init();
 public:
 
+	
+
 	void sortujWAsm();
 	void sortujWCPP();
 	void setSciezkaIn(std::string sciezka);
 	void setSciezkaOut(std::string sciezka);
+	
 
 	int ileLiczbWPliku(std::string sciezka);
 	void kopiujTablice();

@@ -7,6 +7,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bubblesort", "bubblesort\bu
 	ProjectSection(ProjectDependencies) = postProject
 		{6298A504-F56D-485D-B76B-1B27C62DD976} = {6298A504-F56D-485D-B76B-1B27C62DD976}
 		{A1EF622F-78CE-419A-BB29-626EFD2F6ACC} = {A1EF622F-78CE-419A-BB29-626EFD2F6ACC}
+		{E17AB54D-0FB2-4ED0-BCEC-E587FCAAF31F} = {E17AB54D-0FB2-4ED0-BCEC-E587FCAAF31F}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plikCPP", "plikCPP\plikCPP.vcxproj", "{6298A504-F56D-485D-B76B-1B27C62DD976}"
@@ -15,6 +16,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plikASM", "plikASM\plikASM.
 	ProjectSection(ProjectDependencies) = postProject
 		{6298A504-F56D-485D-B76B-1B27C62DD976} = {6298A504-F56D-485D-B76B-1B27C62DD976}
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GUI", "GUI\GUI.vcxproj", "{E17AB54D-0FB2-4ED0-BCEC-E587FCAAF31F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +37,10 @@ Global
 		{A1EF622F-78CE-419A-BB29-626EFD2F6ACC}.Debug|Win32.Build.0 = Debug|Win32
 		{A1EF622F-78CE-419A-BB29-626EFD2F6ACC}.Release|Win32.ActiveCfg = Release|Win32
 		{A1EF622F-78CE-419A-BB29-626EFD2F6ACC}.Release|Win32.Build.0 = Release|Win32
+		{E17AB54D-0FB2-4ED0-BCEC-E587FCAAF31F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E17AB54D-0FB2-4ED0-BCEC-E587FCAAF31F}.Debug|Win32.Build.0 = Debug|Win32
+		{E17AB54D-0FB2-4ED0-BCEC-E587FCAAF31F}.Release|Win32.ActiveCfg = Release|Win32
+		{E17AB54D-0FB2-4ED0-BCEC-E587FCAAF31F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -30,8 +30,7 @@ ArrayToBeSort::ArrayToBeSort(string sciezkaI, string sciezkaO)
 	setSciezkaIn(sciezkaI);
 	setSciezkaOut(sciezkaO);
 	iloscElementow = ileLiczbWPliku(sciezkaIn);
-	ptrToIn = nullptr;
-	ptrToOut = nullptr;
+	
 	init();
 	
 }
@@ -39,8 +38,10 @@ ArrayToBeSort::ArrayToBeSort(string sciezkaI, string sciezkaO)
 
 ArrayToBeSort::~ArrayToBeSort()
 {
-	delete[] ptrToIn;
-	delete[] ptrToOut;
+	//delete[] ptrToIn;
+
+
+	//delete[] ptrToOut;
 }
 
 
@@ -77,9 +78,8 @@ fstream plik;
 	{
 		int i = 0;
 		int j = this->ileLiczbWPliku(this->sciezkaIn);
-		//int *tab;
-		//tab = new int[j];
-		this->ptrToIn = new int[j];
+		
+		//this->ptrToIn = new int[j];   
 
 		int temp = 0;
 
@@ -88,13 +88,14 @@ fstream plik;
 		{
 
 			plik >> temp;
-			//tab[i] = temp;
-			this->ptrToIn[i] = temp;
-			cout << this->ptrToIn[i] << "\n";
+			
+			//this->ptrToIn[i] = temp;
+			this->ptrToIn.push_back(temp);
+			//cout << this->ptrToIn[i] << "\n";
 			i++;
 
 		}
-		//return tab;
+		
 		
 
 
@@ -122,22 +123,23 @@ void ArrayToBeSort::zapiszPlik()
 void ArrayToBeSort::sortujWAsm()
 {
 	this->kopiujTablice();
-	fun(this->ptrToOut, this->iloscElementow);
+	fun(&ptrToOut.front(), this->iloscElementow);
 }
 
 void ArrayToBeSort::sortujWCPP()
 {
 	this->kopiujTablice();
-	funCpp(this->ptrToOut, this->iloscElementow);
+	funCpp(&ptrToOut.front(), this->iloscElementow);
 }
 
 void ArrayToBeSort::kopiujTablice()
 {
-	this->ptrToOut = new int[this->iloscElementow];
-	for (int i = 0; i < this->iloscElementow; i++)
-	{
-		this->ptrToOut[i] = this->ptrToIn[i];
-	}
+	//this->ptrToOut = new int[this->iloscElementow];
+	//for (int i = 0; i < this->iloscElementow; i++)
+	//{
+	//	this->ptrToOut[i] = this->ptrToIn[i];
+	//}
+	ptrToOut = ptrToIn;
 }
 
 
@@ -170,10 +172,10 @@ void ArrayToBeSort::operator=(const ArrayToBeSort &arr)
 	sciezkaIn = arr.sciezkaIn;
 	sciezkaOut = arr.sciezkaOut;
 	iloscElementow = arr.iloscElementow;
-	ptrToIn = new int[iloscElementow];
-	ptrToOut = new int[iloscElementow];
-	memcpy((void*)ptrToIn, (void*)arr.ptrToIn, iloscElementow * sizeof(ptrToIn[0]));
-	memcpy((void*)ptrToOut, (void*)arr.ptrToOut, iloscElementow * sizeof(ptrToOut[0]));
+	//ptrToIn = new int[iloscElementow];
+	//ptrToOut = new int[iloscElementow];
+	//memcpy((void*)ptrToIn, (void*)arr.ptrToIn, iloscElementow * sizeof(ptrToIn[0]));
+//	memcpy((void*)ptrToOut, (void*)arr.ptrToOut, iloscElementow * sizeof(ptrToOut[0]));
 	//indeksPliku = arr.indeksPliku;
 
 }
